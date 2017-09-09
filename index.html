@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>JADER</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="css/main.css">
+
+</head>
+<body>
+
+	<header>
+			<nav class="navbar navbar-inverse navbar-fixed-top">
+      <center>
+				<div class="row">
+						<div class="col-sm-12" style="">
+							<div class="col-sm-2">
+								<img class="img-conquistadores" src="img/conquistadores.png" alt="" width="100">
+							</div>
+							<div class="col-sm-8">
+									<h1 class="text-left">CONQUISTADORES</h1>
+							</div>
+              <div class="col-sm-2" style="">
+              <a>
+                <img class="img-conquistadores-jader" src="img/logo.jpg" alt=""width="100">
+              </a>
+							</div>
+						</div>
+				</div>
+      </center>
+        <div class="linea"></div>
+				<div class="row">
+						<div class="example3">
+								<div class="container nav-container">
+									<div class="navbar-header">
+										<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar3">
+											<span class="sr-only">Toggle navigation</span>
+											<span class="icon-bar"></span>
+											<span class="icon-bar"></span>
+											<span class="icon-bar"></span>
+										</button>
+									</div>
+
+                  <div class="col-sm-12" style="">
+									<div id="navbar3" class="navbar-collapse collapse">
+										<ul class="nav navbar-nav navbar-right">
+											<li class="active"><a href="#services">SOBRE EL CLUB</a></li>
+											<li class="active"><a href="#portfolio">ESPECIALIDADES</a></li>
+											<li class="active"><a href="#about">FOTOS</a></li>
+											<li class="active"><a href="#contact">CONTACT</a></li>
+										</ul>
+									</div>
+								</div>
+						</div>
+	      </div>
+      </div>
+	</div>
+</nav>
+</header>
+<section>
+  <div class="formulario">
+
+  <form class="form-horizontal text-center">
+
+  			<h1><strong>CONTACTO</strong></h1>
+
+  			<div class="form-group">
+  				<label class="control-label col-sm-3" for="name">Nombre:</label>
+  				<div class="col-sm-6">
+  				<input type="nombre" class="form-control" id="inputNombre" placeholder="nombre">
+  				</div>
+  			</div>
+        <div class="form-group">
+          <label class="control-label col-sm-3" for="name">Comentario:</label>
+          <div class="col-sm-6">
+          <input type="comentario" class="form-control" id="inputComentario" placeholder="comentario">
+          </div>
+        </div>
+
+  			<div class="form-group">
+  				<div class="col-sm-offset-2 col-sm-3">
+    				<button id="guardarDatos" type="submit" class="btn btn-default">Guardar datos</button>
+  				</div>
+          <div class="col-sm-offset-2 col-sm-3">
+            <button id="limpiarDatos" type="submit" class="btn btn-default">Limpiar datos</button>
+          </div>
+  			</div>
+  		</form>
+      <div id="lista-contactos">
+      </div>
+</section>
+<script>
+const app  = {
+    item :  {
+        nombre: undefined,
+        comentario: undefined
+    },
+    inicio : function () {
+        app.item.nombre =   $('#inputNombre');
+        app.item.comentario =   $('#inputComentario');
+        app.mostrarComentario();
+        app.cuandoClickea ();
+    },
+    cuandoClickea: function () {
+        $('#guardarDatos').click (app.agregarComentario) ;
+        $('#limpiarDatos').click (app.limpiarComentario) ;
+    },
+    agregarComentario: function () {
+        localStorage.setItem(app.item.nombre.val(), app.item.comentario.val());
+        app.mostrarComentario();
+     },
+     mostrarComentario:function(){
+       $('#lista-contactos').empty();
+         for (let comentario in localStorage) {
+           let lista = localStorage[comentario];
+           $('#lista-contactos').append(`<p>Nombre: ${comentario}</p> <p>Comentario: ${lista}</p`);//
+     }
+    },
+    limpiarComentario: function(){
+      $('#lista-contactos').empty();
+        localStorage.clear();
+    }
+}
+$(document).ready( app.inicio);
+</script>
+</body>
+</html>

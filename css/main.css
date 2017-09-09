@@ -1,0 +1,35 @@
+*{
+  margin: 0px;
+  padding: 0px;
+  color: white;
+}
+
+body{
+  background-image: url("../img/fondo1.jpg");
+  background-size: 100%;
+  height: auto;
+  filter: grayscale(100%);
+  -webkit-filter: grayscale(100%);
+  transition:filter 0.4s;
+}
+
+body:hover {
+filter: grayscale(0);
+
+-webkit-filter: grayscale(0);
+
+}
+.linea{
+  border: 1px solid white;
+}
+
+.navbar, .formulario{
+  background-color: rgba(0, 0, 0, .6);
+  position: relative;
+}
+
+.formulario{
+  margin: auto;
+  width: 90%;
+  padding: 5%;
+}
